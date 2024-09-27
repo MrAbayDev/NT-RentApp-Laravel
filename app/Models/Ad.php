@@ -32,4 +32,10 @@ class Ad extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
 
     }
+    public function bookmark(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
+
+
 }
