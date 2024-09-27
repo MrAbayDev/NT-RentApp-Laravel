@@ -13,7 +13,7 @@ Route::resource('ads', AdController::class);
 Route::get('/search', [AdController::class, 'search']);
 
 Route::resource('branches', BranchController::class);
-
+Route::post('/ads/{id}/bookmark', [\App\Http\Controllers\UserController::class, 'toggleBookmark'])->name('ads.bookmark');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

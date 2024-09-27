@@ -53,8 +53,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ad::class);
     }
-    public function bookmarks(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function bookmarks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsTo(Ad::class);
+        return $this->belongsToMany(Ad::class , 'bookmarks', 'user_id', 'ad_id');
+    }
+    public function bookmarkedAds(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Ad::class);
     }
 }

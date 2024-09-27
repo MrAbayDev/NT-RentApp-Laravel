@@ -7,8 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function toggleBookmark(Request $request)
+    public function toggleBookmark($id): \Illuminate\Http\RedirectResponse
     {
-        $user = Auth::user()->id;
+        $user = auth()->user();
+
+        if ($user->bookmarkedAds()->where('ad_id', $id)->exists()) {
+            $user->bookmarkedAds()->detach($id);
+            return back()->with('message', "O'chirildi");
+        }else{
+            $user->bookmarkedAds()->attach($id);
+            return back()->with('message', "qoshildi");
+        }
     }
-}
+    }
