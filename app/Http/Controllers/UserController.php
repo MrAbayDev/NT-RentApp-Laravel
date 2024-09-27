@@ -11,11 +11,11 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->bookmarkedAds()->where('ad_id', $id)->exists()) {
-            $user->bookmarkedAds()->detach($id);
+        if ($user->bookmarks()->where('ad_id', $id)->exists()) {
+            $user->bookmarks()->detach($id);
             return back()->with('message', "O'chirildi");
         }else{
-            $user->bookmarkedAds()->attach($id);
+            $user->bookmarks()->attach($id);
             return back()->with('message', "qoshildi");
         }
     }

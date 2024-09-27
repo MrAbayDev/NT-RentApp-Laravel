@@ -7,7 +7,12 @@
                     <img src="../assets/images/ads/{{ $ad->image_name }}" alt="">
 
                     <div class="absolute top-4 end-4">
-                        <a href="javascript:void(0)" class="btn btn-icon bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-full text-slate-100 dark:text-slate-700 focus:text-yellow-400 dark:focus:text-yellow-400 hover:text-yellow-400 dark:hover:text-yellow-400"><i class="mdi mdi-bookmark text-[20px]"></i></a>
+                        <form action="/ads/{{$ad->id}}/bookmark" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-icon btn-sm btn-success shadow">
+                                <i data-feather="bookmark" class="text-[20px]"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </a>
